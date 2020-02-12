@@ -4,7 +4,7 @@ const app = express();
 const formidableMiddleware = require("express-formidable");
 app.use(formidableMiddleware());
 
-mongoose.connect("mongodb://localhost/leboncoin-api", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
@@ -30,6 +30,6 @@ app.all("*", function(req, res) {
   res.status(404).json({ error: "Not Found" });
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("leboncoin API running"); // on port 3000
 });
