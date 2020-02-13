@@ -4,7 +4,7 @@ const app = express();
 const formidableMiddleware = require("express-formidable");
 app.use(formidableMiddleware());
 
-mongoose.connect("mongodb://localhost/leboncoin-api", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
